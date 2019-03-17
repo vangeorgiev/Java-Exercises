@@ -1,0 +1,118 @@
+public class SimpleCalculator {
+    private double firstNumber;
+    private double secondNumber;
+
+    public SimpleCalculator() {
+
+    }
+
+    public SimpleCalculator(double firstNumber, double secondNumber) {
+        this.firstNumber = firstNumber;
+        this.secondNumber = secondNumber;
+    }
+
+    public double getFirstNumber(){
+        return firstNumber;
+    }
+
+    public double getSecondNumber(){
+        return secondNumber;
+    }
+
+    public void setFirstNumber(double firstNumber){
+        this.firstNumber = firstNumber;
+    }
+
+    public void setSecondNumber(double secondNumber){
+        this.secondNumber=secondNumber;
+    }
+
+    public double getAdditionResult(){
+        return firstNumber + secondNumber;
+    }
+
+    public double getSubtractionResult(){
+        return firstNumber - secondNumber;
+    }
+
+    public double getMultiplyResult(){
+        return firstNumber * secondNumber;
+    }
+
+    public double getDivisionResult(){
+        if(secondNumber==0){
+            return 0;
+        }
+        return firstNumber / secondNumber;
+    }
+}
+
+
+import java.util.Scanner;
+
+public class Main {
+    static Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) {
+
+        SimpleCalculator calculator = new SimpleCalculator();
+
+        int chooseNumber;
+
+
+        System.out.println("\t //WELCOME TO CALCULATOR ");
+        introToCalc();
+
+        do {
+            System.out.println("CHOOSE OPTION: \t");
+
+            switch (chooseNumber = scanner.nextInt()) {
+
+                case 1:
+                    calculator.setFirstNumber(scanner.nextDouble());
+                    calculator.setSecondNumber(scanner.nextDouble());
+                    break;
+
+                case 2:
+                    System.out.println(calculator.getAdditionResult());
+                    break;
+                case 3:
+                    System.out.println(calculator.getSubtractionResult());
+                    break;
+                case 4:
+                    System.out.println(calculator.getDivisionResult());
+                    break;
+                case 5:
+                    System.out.println(calculator.getMultiplyResult());
+                    break;
+                case 6:
+                    System.out.printf("\nFirst number:" + calculator.getFirstNumber() + "\nSecond number:"
+                            + calculator.getSecondNumber() + "\n ");
+                    break;
+                case 7:
+                    introToCalc();
+                    break;
+                case 8:
+                    chooseNumber = 0;
+                break;
+                default:
+                    System.out.println("WRONG !!!");
+                    break;
+
+            }
+
+        } while (chooseNumber != 0);
+
+    }
+
+    public static void introToCalc() {
+        System.out.println("| Option 1: to add two numbers.     | ");
+        System.out.println("| Option 2: Get Addition result.    |");
+        System.out.println("| Option 3: Get Subtraction result. |");
+        System.out.println("| Option 4: Get Division result.    |");
+        System.out.println("| Option 5: Get Multiply result.    |");
+        System.out.println("| Option 6: Show typed numbers.     |");
+        System.out.println("| Option 7: Show options again.     |");
+
+    }
+}
