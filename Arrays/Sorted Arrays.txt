@@ -1,0 +1,52 @@
+import javax.sound.midi.Soundbank;
+import java.awt.image.AreaAveragingScaleFilter;
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Main {
+    static Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) {
+
+        int[] arr = {5, 2, 5, 1, 3, 2, 6, 7};
+        String[] str = {"vangel", "ivan", "petyr", "j   eko"};
+
+        System.out.println(Arrays.toString(sortInt(arr)));
+        System.out.println(Arrays.toString(sortString(str)));
+
+    }
+
+    public static int[] sortInt(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length - 1; j++) {
+                int temp = arr[j + 1];
+                if (arr[j] > arr[j + 1]) {
+                    arr[j + 1] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+        return arr;
+    }
+
+    public static String[] sortString(String[] str) {
+
+        for (int i = 0; i < str.length; i++) {
+            char[] tempArr = new char[str[i].length()];
+
+            for (int j = 0; j < tempArr.length; j++) {
+                tempArr[j] = str[i].charAt(j);
+            }
+            Arrays.sort(tempArr);
+
+            for (int k = 0; k < tempArr.length; k++) {
+                String string = new String(tempArr);
+                str[i] = string;
+            }
+        }
+        return str;
+    }
+}
+
+
+
