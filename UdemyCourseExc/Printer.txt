@@ -1,0 +1,48 @@
+public class Printer {
+    private int tonerLevel;
+    private int pagesPrinted;
+    private boolean isDuplex;
+
+    public Printer(int tonerLevel,  boolean isDuplex) {
+        if(tonerLevel >=0 && tonerLevel <=100){
+            this.tonerLevel = tonerLevel;
+        } else
+            this.tonerLevel = 0;
+        this.isDuplex = isDuplex;
+        this.pagesPrinted = 0;  
+    }
+
+    public void printPage(int number){
+        if(number <= getTonerLevel()) {
+            this.pagesPrinted = this.pagesPrinted + number;
+            System.out.println("Printed " + number + " pages");
+            System.out.println("Pages printed today: " + getNumberOfPagesPrinter());
+            this.tonerLevel = this.tonerLevel - number;
+        } else {
+            System.out.println("Toner level too low. Current toner level: " + getTonerLevel());
+        }
+    }
+
+    public void fillTonerLevel(int level){
+        if((getTonerLevel()+ level) <= 100){
+            this.tonerLevel = this.tonerLevel + level;
+            System.out.println("Toner is filled with " + level + "%" +
+                    " Toner level: " + getTonerLevel() + "%");
+        } else {
+            System.out.println("There is no enough space. Toner level: " + getTonerLevel());
+        }
+
+    }
+
+    public int getTonerLevel() {
+        return tonerLevel;
+    }
+
+    public int getNumberOfPagesPrinter() {
+        return pagesPrinted;
+    }
+
+    public boolean isDuplex() {
+        return isDuplex;
+    }
+}

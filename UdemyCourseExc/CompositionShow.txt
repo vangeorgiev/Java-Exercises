@@ -1,0 +1,103 @@
+public class Lamp {
+    private String color;
+
+    public Lamp(String color) {
+        this.color = color;
+    }
+
+    public void turnOn(){
+        System.out.println("The lamp lighting with " + color + " color");
+    }
+}
+
+
+public class Wall {
+    private String color;
+    private int height;
+    private int width;
+
+    public Wall(String color, int height, int width) {
+        this.color = color;
+        this.height = height;
+        this.width = width;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+}
+
+
+public class Room {
+
+    private Wall wall1;
+    private Wall wall2;
+    private Wall wall3;
+    private Wall wall4;
+
+    private Bed bed;
+    private Lamp lamp;
+
+    public Room(Wall wall1, Wall wall2, Wall wall3, Wall wall4, Bed bed, Lamp lamp) {
+        this.wall1 = wall1;
+        this.wall2 = wall2;
+        this.wall3 = wall3;
+        this.wall4 = wall4;
+        this.bed = bed;
+        this.lamp = lamp;
+    }
+
+    public Lamp getLamp(){
+        return this.lamp;
+    }
+
+    public Bed getBed(){
+        return this.bed;
+    }
+
+    public Wall getWall1() {
+        return wall1;
+    }
+
+    public Wall getWall2() {
+        return wall2;
+    }
+
+    public Wall getWall3() {
+        return wall3;
+    }
+
+    public Wall getWall4() {
+        return wall4;
+    }
+}
+
+
+import java.util.Scanner;
+
+public class Main {
+    static Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) {
+
+        Wall wall1 = new Wall("Zelen",2,3);
+        Wall wall2 = new Wall("Zelen",2,3);
+        Wall wall3 = new Wall("Zelen",2,3);
+        Wall wall4 = new Wall("Zelen",2,3);
+        Bed myBed = new Bed(2, new Matrak("zelen"));
+        Lamp lamp = new Lamp("Bql");
+
+        Room myRoom = new Room(wall1,wall2,wall3,wall4,myBed,lamp);
+
+       myRoom.getLamp().turnOn();
+        System.out.println(myRoom.getWall1().getColor());
+    }
+}

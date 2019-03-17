@@ -1,0 +1,61 @@
+public class BankAccaunt {
+    private int accauntNumber;
+    private double balance;
+    private String customerName;
+    private String email;
+    private int phoneNumber;
+
+    public void deposit (double depositAmount){
+        this.balance = this.balance + depositAmount;
+        System.out.printf("\nDeposit of %.2f is made. New balance is: %.2f leva", depositAmount, getBalance());
+    }
+
+    public void withdraw (double withdrawAmount){
+        if(this.balance < withdrawAmount){
+            System.out.printf("\nOnly %.2f available. Withdrawal not processed", getBalance());
+        } else {
+            this.balance = this.balance - withdrawAmount;
+            System.out.printf("\nWithdrawal of %.2f processed. The amount in your account is %.2f leva",withdrawAmount, getBalance());
+        }
+    }
+
+    public int getAccauntNumber(){
+        return accauntNumber;
+    }
+
+    public double getBalance(){
+        return balance;
+    }
+
+    public String getCustomerName(){
+        return customerName;
+    }
+
+    public String getEmail(){
+        return email;
+    }
+
+    public int getPhoneNumber(){
+        return phoneNumber;
+    }
+
+    public void setAccauntNumber(int accauntNumber){
+        this.accauntNumber = accauntNumber;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPhoneNumber(int phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+}
