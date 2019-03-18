@@ -1,0 +1,128 @@
+public class Hamburger {
+    private String name;
+    private String meat;
+    private String breadRollType;
+    private double price;
+
+    private String additionName1;
+    private double additionPrice1;
+
+    private String additionName2;
+    private double additionPrice2;
+
+    private String additionName3;
+    private double additionPrice3;
+
+    public Hamburger(String name, String meat, double price, String breadRollType) {
+        this.name = name;
+        this.meat = meat;
+        this.breadRollType = breadRollType;
+        this.price = price;
+    }
+
+    public void addHamburgerAddition1(String name, double price) {
+        this.additionName1 = name;
+        this.additionPrice1 = price;
+    }
+
+    public void addHamburgerAddition2(String name, double price) {
+        this.additionName2 = name;
+        this.additionPrice2 = price;
+    }
+
+    public void addHamburgerAddition3(String name, double price) {
+        this.additionName3 = name;
+        this.additionPrice3 = price;
+    }
+
+    public double totalCost() {
+        double hamburgerPrice = this.price;
+        System.out.println(this.name + " Hamburger with " + this.meat + " on a " + this.breadRollType
+                + " roll, price is: " + this.price);
+        if (this.additionName1 != null) {
+            hamburgerPrice += additionPrice1;
+            System.out.println("Added " + this.additionName1 + " for an extra "
+                    + this.additionPrice1 + " leva");
+        }
+        if (this.additionName2 != null) {
+            hamburgerPrice += additionPrice2;
+            System.out.println("Added " + this.additionName2 + " for an extra "
+                    + this.additionPrice2 + " leva");
+        }
+        if (this.additionName3 != null) {
+            hamburgerPrice += additionPrice3;
+            System.out.println("Added " + this.additionName3 + " for an extra "
+                    + this.additionPrice3 + " leva");
+        }
+
+
+        return hamburgerPrice;
+    }
+
+
+}
+
+
+public class HealthyBurger extends Hamburger {
+    private String healthyAdditionName1;
+    private double healthyAdditionPrice1;
+
+    private String healthyAdditionName2;
+    private double healthyAdditionPrice2;
+
+    public HealthyBurger(String meat, double price) {
+        super("Healthy", meat, price, "Brown rye");
+    }
+
+    public void addHealthyAddition1(String name, double price) {
+        this.healthyAdditionName1 = name;
+        this.healthyAdditionPrice1 = price;
+    }
+
+    public void addHealthyAddition2(String name, double price) {
+        this.healthyAdditionName2 = name;
+        this.healthyAdditionPrice2 = price;
+    }
+
+    @Override
+    public double totalCost() {
+        double healthyBurgerPrice = super.totalCost();
+
+        if (healthyAdditionName1 != null) {
+            healthyBurgerPrice += this.healthyAdditionPrice1;
+            System.out.println("Added " + this.healthyAdditionName1 + " for an extra "
+                    + this.healthyAdditionPrice1 + " leva");
+        }
+        if (healthyAdditionName2 != null) {
+            healthyBurgerPrice += this.healthyAdditionPrice2;
+            System.out.println("Added " + this.healthyAdditionName2 + " for an extra "
+                    + this.healthyAdditionPrice2 + " leva");
+        }
+        return healthyBurgerPrice;
+    }
+}
+
+
+public class DeluxeHamburger extends Hamburger {
+
+    public DeluxeHamburger() {
+        super("Deluxe", "Steak", 14.99, "White");
+        super.addHamburgerAddition1("Chips", 0);
+        super.addHamburgerAddition2("Drink", 0);
+    }
+
+    @Override
+    public void addHamburgerAddition1(String name, double price) {
+        System.out.println("You cannot add additions to deluxe burger");
+    }
+
+    @Override
+    public void addHamburgerAddition2(String name, double price) {
+        System.out.println("You cannot add additions to deluxe burger");
+    }
+
+    @Override
+    public void addHamburgerAddition3(String name, double price) {
+        System.out.println("You cannot add additions to deluxe burger");
+    }
+}
