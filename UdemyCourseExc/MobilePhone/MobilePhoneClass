@@ -1,0 +1,78 @@
+import java.util.ArrayList;
+
+public class MobilePhone {
+
+    private String number;
+    ArrayList<Contact> myContacts;
+
+    public MobilePhone(String number) {
+        this.number = number;
+        this.myContacts = new ArrayList<Contact>();
+    }
+
+    public boolean addNewContact(Contact contact) {
+        if (findContact(contact.getName()) >= 0) {
+            System.out.println("Contact " + contact.getName() + " already exist");
+            return false;
+        } else {
+            this.myContacts.add(contact);
+            System.out.println("Contact " + contact.getName() + " is created");
+            return true;
+        }
+    }
+
+    public boolean removeExistingContact(Contact contact) {
+        if (findContact(contact.getName()) < 0) {
+            System.out.println("There is no contact in the list with name: " + contact.getName());
+            return false;
+        } else {
+            this.myContacts.remove(contact);
+            System.out.println(contact.getName() + " is removed.");
+            return true;
+        }
+    }
+
+    public boolean updateExistingContact(Contact oldContact, Contact newContact){
+        if(findContact(oldContact) < 0){
+            System.out.println(oldContact.getName() + " was nout found.");
+            return false;
+        } else{
+            myContacts.set(findContact(oldContact),newContact);
+            System.out.println(oldContact.getName() + " was updated with " + newContact.getName());
+            return true;
+        }
+    }
+
+
+
+    public int findContact(Contact contact) {
+        return this.myContacts.indexOf(contact);
+    }
+
+    private int findContact(String name) {
+        for (int i = 0; i < myContacts.size(); i++) {
+            Contact contact = myContacts.get(i);
+            if (contact.getName().equals(name)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+
+    public Contact query (String name){
+        if(findContact(name) >= 0){
+            return myContacts.get(findContact(name));
+        }
+        return null;
+    }
+
+    public void printContacts(){
+        System.out.println("\t CONTACT LIST:");
+        for (int i = 0; i < myContacts.size(); i++) {
+            System.out.println(i+1 + "." + myContacts.get(i).getName()
+            + " -> " + myContacts.get(i).getPhoneNumber());
+        }
+    }
+
+}
