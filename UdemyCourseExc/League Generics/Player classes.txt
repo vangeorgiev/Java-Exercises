@@ -1,0 +1,27 @@
+public abstract class Player {
+    private String name;
+
+    public Player(String name){
+        this.name = name;
+    }
+
+    public String getName(){
+        return this.name;
+    }
+}
+
+
+public class FootballPlayer extends Player {
+
+    public FootballPlayer(String name) {
+        super(name);
+    }
+}
+
+
+public class BaseballPlayer extends Player{
+
+    public BaseballPlayer(String name){
+        super(name);
+    }
+}
