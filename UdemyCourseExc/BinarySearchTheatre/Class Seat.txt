@@ -1,0 +1,46 @@
+class Seat implements Comparable<Seat> {
+    private String seatNumber;
+    private boolean isReserved = false;
+
+    public Seat(String seatNumber) {
+        this.seatNumber = seatNumber;
+    }
+
+    public String getSeatNumber() {
+        return this.seatNumber;
+    }
+
+    public boolean reserve() {
+        if (!isReserved) {
+            isReserved = true;
+            System.out.println("Seat " + seatNumber + " is reserved");
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean isItreserve() {
+        if (!isReserved) {
+            isReserved = true;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean cancel() {
+        if (isReserved) {
+            isReserved = false;
+            System.out.println(seatNumber + " is canceled");
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public int compareTo(Seat seat) {
+        return this.seatNumber.compareToIgnoreCase(seat.getSeatNumber());
+    }
+}
