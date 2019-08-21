@@ -7,9 +7,9 @@ public class Main {
         Weapon sword = new Weapon("Sword", 50);
         Weapon axe = new Weapon("Axe", 60);
 
-        java.lang.Character troll = new java.lang.Character(50, "Troll",bow);
-        java.lang.Character elf = new java.lang.Character(35, "Elf", sword);
-        java.lang.Character wizard = new java.lang.Character(35, "Wizard", bow);
+        Character troll = new java.lang.Character(50, "Troll",bow);
+        Character elf = new java.lang.Character(35, "Elf", sword);
+        Character wizard = new java.lang.Character(35, "Wizard", bow);
 
         try {
             FileOutputStream fileStream = new FileOutputStream("MyGame.ser");
